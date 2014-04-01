@@ -3,29 +3,32 @@
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.css"></link>
 		<link type="text/css" rel="stylesheet" href="css/style.css"></link>
 		<script src="lib/angular/angular.js"></script>
-		<script src="js/modules.js"></script>
 		<script src="js/modules-mocks.js"></script>
 		<script src="js/controllers.js"></script>
 	</head>
-	<body ng-controller="LoginForm">
+	<body>
 		<div class="container">
-			<form action="index.html" method="get"> 
-			<p class="bolt-bank">Bank <span class="light-bank">Support Portal</span></p>
-				<div class="row">
-					<div class="input-box">
-						<input style="text" class="text-input email" placeholder="E-mail"/>
-						<span class="error"></span>
-						<div class="error-message">Invalid UserName</div>
-					</div>
-					<div class="input-box">
-						<input style="text" class="text-input pass" placeholder="Password"/>
-						<span class="error"></span>
-						<div class="error-message">Invalid Password</div>
-					</div>
-					<input type="submit" value="Login" class="submit-login" />
-					<p class="forgot-pass">Forgot your password? <a href="index.html">Reset it here</a></p>
-				</div>
-			</form>
+			<div ng-controller="LoginFormController">
+				<form action="index.html" method="get" name="form" novalidate> 
+					<p class="bolt-bank">Bank <span class="light-bank">Support Portal</span></p>
+						<div class="row">
+							<div class="input-box">
+								<input type="email" name="uEmail" class="text-input email" ng-model="loginForm.email" placeholder="E-mail" required />
+								<span class="" ng-class="{ error: (form.uEmail.$error.required || form.uEmail.$error.email) && !form.uEmail.$pristine, active: !form.uEmail.$error.required && !form.uEmail.$error.email}"></span>
+								<div class="error-message" ng-show="form.uEmail.$error.required && !form.uEmail.$pristine">This field is required</div>
+      							<div class="error-message" ng-show="form.uEmail.$error.email && !form.uEmail.$pristine">Invalid UserName</div>
+							</div>
+							<div class="input-box">
+								<input type="password" name="uPassword" class="text-input pass" ng-model="loginForm.password" placeholder="Password" required/>
+								<span class="" ng-class="{ error: (form.uPassword.$error.required || form.uPassword.$error.password) && !form.uPassword.$pristine, active: !form.uPassword.$error.required && !form.uPassword.$error.password}"></span>
+								<div class="error-message" ng-show="form.uPassword.$error.required && !form.uEmail.$pristine">This field is required</div>
+      							<div class="error-message" ng-show="form.uPassword.$error.password && !form.uEmail.$pristine">Invalid Password</div>
+							</div>
+							<input type="submit" value="Login" class="submit-login" />
+							<p class="forgot-pass">Forgot your password? <a href="index.html">Reset it here</a></p>
+						</div>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
