@@ -7,8 +7,25 @@
 		<script src="js/modules-mocks.js"></script>
 		<script src="js/controllers.js"></script>
 	</head>
-	<body ng-controller="UserListCtrl">
+	<body ng-controller="LoginForm">
 		<div class="container">
+			<form action="index.html" method="get"> 
+			<p class="bolt-bank">Bank <span class="light-bank">Support Portal</span></p>
+				<div class="row">
+					<div class="input-box">
+						<input style="text" class="text-input email" placeholder="E-mail"/>
+						<span class="error"></span>
+						<div class="error-message">Invalid UserName</div>
+					</div>
+					<div class="input-box">
+						<input style="text" class="text-input pass" placeholder="Password"/>
+						<span class="error"></span>
+						<div class="error-message">Invalid Password</div>
+					</div>
+					<input type="submit" value="Login" class="submit-login" />
+					<p class="forgot-pass">Forgot your password? <a href="index.html">Reset it here</a></p>
+				</div>
+			</form>
 		</div>
 	</body>
 </html>
