@@ -14,17 +14,18 @@
 						<div class="row">
 							<div class="input-box">
 								<input type="email" name="uEmail" class="text-input email" ng-model="loginForm.email" placeholder="E-mail" required />
-								<span class="" ng-class="{ error: (form.uEmail.$error.required || form.uEmail.$error.email) && !form.uEmail.$pristine, active: !form.uEmail.$error.required && !form.uEmail.$error.email}"></span>
+								<span ng-class="{ error: (form.uEmail.$error.required || form.uEmail.$error.email) && !form.uEmail.$pristine, active: !form.uEmail.$error.required && !form.uEmail.$error.email}"></span>
 								<div class="error-message" ng-show="form.uEmail.$error.required && !form.uEmail.$pristine">This field is required</div>
-      							<div class="error-message" ng-show="form.uEmail.$error.email && !form.uEmail.$pristine">Invalid UserName</div>
+      							<div class="error-message" ng-show="form.uEmail.$invalid && !form.uEmail.$pristine">Invalid UserName</div>
 							</div>
 							<div class="input-box">
-								<input type="password" name="uPassword" class="text-input pass" ng-model="loginForm.password" placeholder="Password" required/>
-								<span class="" ng-class="{ error: (form.uPassword.$error.required || form.uPassword.$error.password) && !form.uPassword.$pristine, active: !form.uPassword.$error.required && !form.uPassword.$error.password}"></span>
-								<div class="error-message" ng-show="form.uPassword.$error.required && !form.uEmail.$pristine">This field is required</div>
-      							<div class="error-message" ng-show="form.uPassword.$error.password && !form.uEmail.$pristine">Invalid Password</div>
+								<input type="password" name="uPassword" class="text-input pass" password-validate ng-model="loginForm.password" placeholder="Password" required/>
+								<span ng-class="{ error: (form.uPassword.$error.required || form.uPassword.$error.password) && !form.uPassword.$pristine, active: !form.uPassword.$error.required && !form.uPassword.$error.password}"></span>
+								<div class="error-message" ng-show="form.uPassword.$error.required && !form.uPassword.$pristine">This field is required</div>
+      							<!--<div class="error-message" ng-show="form.uPassword.$error.password && !form.uEmail.$pristine">Invalid Password</div>-->
 							</div>
-							<input type="submit" value="Login" class="submit-login" />
+							<!--<input type="submit" value="Login" class="submit-login" />-->
+							<button class="submit-login" ng-disabled="!form.$valid">Login</button>
 							<p class="forgot-pass">Forgot your password? <a href="index.html">Reset it here</a></p>
 						</div>
 				</form>
